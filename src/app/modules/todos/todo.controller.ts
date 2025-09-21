@@ -21,6 +21,7 @@ export const createTodo = async (req: Request, res: Response) => {
 };
 
 export const getTodos = async (req: Request, res: Response) => {
+  console.log(req.body);
   try {
     const todo = await Todo.find({ isDeleted: false });
     res.send({

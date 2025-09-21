@@ -8,5 +8,6 @@ app.use(express.json());
 app.use(routes);
 app.get("/", (req: Request, res: Response) => {
   res.send("Server is runnig now ✅");
+  console.log(req.body);
 });
 export default app;
