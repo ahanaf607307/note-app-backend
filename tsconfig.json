@@ -1,0 +1,44 @@
+{
+  "compilerOptions": {
+    // File Layout
+    "rootDir": "./src",
+    "outDir": "./dist",
+
+    // Module & Target
+    "module": "nodenext", // Supports ESM & CommonJS interop
+    "target": "esnext",
+    "moduleResolution": "nodenext", // Critical for Node + ESM
+
+    // Environment (Node)
+    "lib": ["esnext"],
+    "types": ["node"], // Ensures Node types available
+
+    // Output
+    "sourceMap": true,
+    "declaration": true,
+    "declarationMap": true,
+
+    // Strict Type Checking
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "exactOptionalPropertyTypes": true,
+
+    // Style & Error Prevention
+    "noImplicitReturns": true,
+    "noImplicitOverride": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+
+    // ESM Compatibility
+    "verbatimModuleSyntax": false, // 🔧 Fixes your TS1295 error
+    "noPropertyAccessFromIndexSignature": false,
+    "isolatedModules": true,
+    "moduleDetection": "force",
+    "noUncheckedSideEffectImports": true,
+
+    // Misc
+    "skipLibCheck": true
+  },
+  "include": ["src"]
+}
