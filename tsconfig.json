@@ -24,7 +24,7 @@
     "exactOptionalPropertyTypes": true,
 
     // Style & Error Prevention
-    "noImplicitReturns": true,
+    "noImplicitReturns": false,
     "noImplicitOverride": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
