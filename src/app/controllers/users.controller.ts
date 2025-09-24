@@ -25,7 +25,7 @@ userRoutes.post("/create-user", async (req: Request, res: Response) => {
 // get user
 userRoutes.get("/", async (req: Request, res: Response) => {
   try {
-    const saveUser = await User.find();
+    const saveUser = await User.find({ isDeleted: false });
     res.send({
       status: 200,
       message: "User getting successful",
@@ -92,7 +92,15 @@ userRoutes.patch("/:userId", async (req: Request, res: Response) => {
 userRoutes.delete("/:userId", async (req: Request, res: Response) => {
   try {
     const userId = req.params.userId;
-    await User.findByIdAndDelete(userId);
+    const findUser = await User.findById(userId);
+    if (!findUser) {
+      return res.status(404).send({
+        success: false,
+        message: "Note not found",
+      });
+    }
+    findUser.isDeleted = true;
+    await findUser.save();
 
     res.send({
       status: 200,
