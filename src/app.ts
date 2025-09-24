@@ -1,11 +1,15 @@
 import express, { Application, Request, Response } from "express";
-import routes from "./app/routes";
+import { notesRoutes } from "./app/controllers/notes.controller";
+import { userRoutes } from "./app/controllers/users.controller";
 
 const app: Application = express();
 app.use(express.json());
 
-// connect routes
-app.use(routes);
+// start note app
+app.use("/notes", notesRoutes);
+app.use("/users", userRoutes);
+// ends note app
+
 app.get("/", (req: Request, res: Response) => {
   res.send("Server is runnig now ✅");
   console.log(req.body);

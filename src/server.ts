@@ -11,7 +11,7 @@ async function main() {
   try {
     server = app.listen(PORT, async () => {
       await mongoose.connect(
-        `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASS}@cluster0.zpuvg.mongodb.net/bdTodoDB?retryWrites=true&w=majority&appName=Cluster0`
+        `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASS}@cluster0.zpuvg.mongodb.net/practice-noteDB?retryWrites=true&w=majority&appName=Cluster0`
       );
       console.log("Connected to mongoose with mongodb ✅");
       console.log(`Server is running in port ${PORT}`);

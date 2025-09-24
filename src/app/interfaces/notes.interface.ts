@@ -1,4 +1,4 @@
-export interface ITodo {
+export interface INote {
   title: string;
   desc: string;
   isCompleted: boolean;
