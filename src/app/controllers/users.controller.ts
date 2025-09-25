@@ -23,8 +23,7 @@ userRoutes.post("/create-user", async (req: Request, res: Response) => {
     const saveUser = await userData.save();
     res.send({
       status: 200,
-      message: "User created successful",
-
+      message: "User created successfully",
       data: saveUser,
     });
   } catch (error: any) {
