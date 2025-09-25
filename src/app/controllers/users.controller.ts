@@ -1,22 +1,37 @@
 import express, { Request, Response } from "express";
+import { z } from "zod";
 import { User } from "../models/users.model";
 
 export const userRoutes = express.Router();
 
+// Zod validation
+
+const UserZodSchema = z.object({
+  firstName: z.string(),
+  lastName: z.string(),
+  email: z.string(),
+  password: z.string(),
+  age: z.number(),
+  role: z.string().optional(),
+  isDeleted: z.boolean().optional(),
+});
+
 userRoutes.post("/create-user", async (req: Request, res: Response) => {
   try {
-    const userBody = req.body;
+    const userBody = await UserZodSchema.parseAsync(req.body);
     const userData = new User(userBody);
     const saveUser = await userData.save();
     res.send({
       status: 200,
       message: "User created successful",
+
       data: saveUser,
     });
-  } catch (error) {
+  } catch (error: any) {
     res.send({
       success: false,
       status: 500,
+
       message: "User creating failed",
       error: { error },
     });
