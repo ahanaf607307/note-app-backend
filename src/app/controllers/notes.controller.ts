@@ -24,9 +24,9 @@ notesRoutes.post("/create-note", async (req: Request, res: Response) => {
 });
 
 //  get note data ->
-notesRoutes.get("", async (req: Request, res: Response) => {
+notesRoutes.get("/", async (req: Request, res: Response) => {
   try {
-    const noteData = await Note.find({ isDeleted: false });
+    const noteData = await Note.find({ isDeleted: false }).populate("user");
     res.send({
       status: 200,
       message: "Note created successful",

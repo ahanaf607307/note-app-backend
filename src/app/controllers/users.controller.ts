@@ -18,8 +18,12 @@ const UserZodSchema = z.object({
 
 userRoutes.post("/create-user", async (req: Request, res: Response) => {
   try {
-    const userBody = await UserZodSchema.parseAsync(req.body);
+    // const userBody = await UserZodSchema.parseAsync(req.body);
+    const userBody = req.body;
+
     const userData = new User(userBody);
+    const passwordHash = await userData.hashPassword(userBody.password);
+    userData.password = passwordHash;
     const saveUser = await userData.save();
     res.send({
       status: 200,
